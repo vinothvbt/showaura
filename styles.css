@@ -2,15 +2,14 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #00ff00, #000000); /* Gradient from green to black */
+    background-color: #fafafa;
     color: #333;
-    overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 header {
-    background: rgba(0, 0, 0, 0.7); /* Slightly transparent background for header */
+    background-color: #000;
     border-bottom: 1px solid #333;
-    padding: 10px 0;
+    padding: 10px 20px;
     text-align: center;
     position: fixed;
     width: 100%;
@@ -18,34 +17,45 @@ header {
     z-index: 1000;
 }
 
-footer {
-    background: rgba(0, 0, 0, 0.7); /* Slightly transparent background for footer */
-    border-top: 1px solid #333;
-    text-align: center;
-    padding: 10px 0;
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
     color: #0f0;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-    z-index: 1000;
+}
+
+.about-button {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    background-color: #333;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.about-button:hover {
+    background-color: #0f0;
+}
+
+main {
+    padding: 80px 20px 20px;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .hero-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.5); /* Slightly transparent overlay for hero section */
-    backdrop-filter: blur(10px); /* Blur effect for background */
-    padding: 20px;
     text-align: center;
 }
 
 .hero-content p {
-    font-size: 24px;
+    font-size: 18px;
     margin: 0;
-    color: #fff; /* White text for better contrast */
 }
 
 .cta-button {
@@ -54,9 +64,9 @@ footer {
     color: #fff;
     text-decoration: none;
     background-color: #0f0;
-    padding: 12px 24px;
+    padding: 10px 20px;
     border-radius: 5px;
-    font-size: 20px;
+    font-size: 18px;
     transition: background-color 0.3s;
 }
 
@@ -65,22 +75,33 @@ footer {
 }
 
 .leaderboard-preview {
-    margin-top: 20px;
-    text-align: center;
+    margin: 40px 0;
+}
+
+.leaderboard-preview h2 {
+    font-size: 24px;
+    color: #000;
 }
 
 .leaderboard-entry {
-    background: rgba(255, 255, 255, 0.8); /* Slightly transparent background for leaderboard entries */
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
     border-radius: 5px;
     padding: 10px;
-    margin: 10px 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+    font-size: 16px;
 }
 
-.leaderboard-entry span {
-    display: block;
-    font-size: 18px;
-    color: #333;
+footer {
+    background-color: #000;
+    border-top: 1px solid #333;
+    text-align: center;
+    padding: 10px 0;
+    color: #0f0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    z-index: 1000;
 }
 
 .bottom-nav {
@@ -94,18 +115,18 @@ footer {
     padding: 0;
     margin: 0;
     display: flex;
-    gap: 30px;
+    gap: 30px; /* Adjust the gap to add more space between buttons */
 }
 
 .nav-links li {
     display: inline;
+    margin: 0 10px;
 }
 
 .nav-links li a {
     color: #fff;
     text-decoration: none;
-    font-size: 24px;
-    padding: 10px;
+    font-size: 18px;
     transition: color 0.3s;
 }
 
