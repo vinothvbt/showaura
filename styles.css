@@ -88,26 +88,29 @@ footer {
 
 .bottom-nav {
     display: flex;
-    justify-content: center;
+    justify-content: center; 
     align-items: center;
 }
-
 .nav-links {
     list-style-type: none;
     padding: 0;
     margin: 0;
     display: flex;
-    gap: 20px; /* Adjust the gap to add more space between buttons */
+    gap: 30px; /* Adjust the gap to add more space between buttons */
 }
 
+
 .nav-links li {
-    display: inline;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .nav-links li a {
     color: #fff;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 24px;
+    padding: 10px;
     transition: color 0.3s;
 }
 
