@@ -13,7 +13,11 @@ header {
     background-color: #000;
     border-bottom: 1px solid #333;
     padding: 10px 0;
-    text-align: center;
+    text-align: left;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
 }
 
 .logo {
@@ -82,8 +86,13 @@ main {
 footer {
     background-color: #000;
     border-top: 1px solid #333;
-    padding: 10px 0;
     text-align: center;
+    padding: 10px 0;
+    color: #0f0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    z-index: 1000;
 }
 
 .bottom-nav {
@@ -101,9 +110,8 @@ footer {
 
 
 .nav-links li {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: inline;
+    margin: 0 10px;
 }
 
 .nav-links li a {
