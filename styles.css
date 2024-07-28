@@ -158,6 +158,7 @@ header {
 .header-actions {
     display: flex;
     align-items: center;
+    margin-left: 20px;
 }
 
 .about-us-button {
