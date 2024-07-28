@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShowAura - Upload Talent</title>
+    <link rel="stylesheet" href="styles1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">ShowAura</div>
+    </header>
+    <main>
+        <section class="upload-section">
+            <h1>Upload Your Talent</h1>
+            <div class="upload-container">
+                <div class="file-drop-zone" id="fileDropZone">
+                    <input type="file" id="fileInput" accept="image/*,video/*,audio/*" hidden>
+                    <label for="fileInput" class="file-input-label"><i class="fas fa-upload"></i> Tap to Upload</label>
+                </div>
+                <div class="preview-container" id="previewContainer">
+                    <p>No file chosen</p>
+                </div>
+                <textarea id="description" placeholder="Write a caption..."></textarea>
+                <button type="submit" class="cta-button"><i class="fas fa-cloud-upload-alt"></i> Upload</button>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <nav class="bottom-nav">
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i></a></li>
+                <li><a href="upload.html"><i class="fas fa-upload"></i></a></li>
+                <li><a href="leaderboard.html"><i class="fas fa-trophy"></i></a></li>
+                <li><a href="talentshow.html"><i class="fas fa-play-circle"></i></a></li>
+            </ul>
+        </nav>
+        <p>&copy; 2024 ShowAura. All rights reserved.</p>
+    </footer>
+    <script>
+        const fileInput = document.getElementById('fileInput');
+        const fileDropZone = document.getElementById('fileDropZone');
+        const previewContainer = document.getElementById('previewContainer');
+
+        fileDropZone.addEventListener('click', () => fileInput.click());
+
+        fileInput.addEventListener('change', handleFilePreview);
+
+        function handleFilePreview() {
+            previewContainer.innerHTML = '';
+            const file = fileInput.files[0];
+            if (file) {
+                const fileType = file.type.split('/')[0];
+                let previewElement;
+                if (fileType === 'image') {
+                    previewElement = document.createElement('img');
+                    previewElement.src = URL.createObjectURL(file);
+                } else if (fileType === 'video') {
+                    previewElement = document.createElement('video');
+                    previewElement.controls = true;
+                    previewElement.src = URL.createObjectURL(file);
+                } else if (fileType === 'audio') {
+                    previewElement = document.createElement('audio');
+                    previewElement.controls = true;
+                    previewElement.src = URL.createObjectURL(file);
+                } else {
+                    previewElement = document.createElement('p');
+                    previewElement.textContent = 'File type not supported';
+                }
+                previewContainer.appendChild(previewElement);
+            } else {
+                previewContainer.innerHTML = '<p>No file chosen</p>';
+            }
+        }
+    </script>
+</body>
+</html>
