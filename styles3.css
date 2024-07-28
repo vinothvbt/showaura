@@ -1,11 +1,16 @@
-body {
+html, body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #000;
-    color: #fff;
+    padding: 0;
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background-color: #fafafa;
+    color: #333;
 }
 
 #page-container {
@@ -16,9 +21,13 @@ body {
 
 header {
     background-color: #000;
+    border-bottom: 1px solid #333;
     padding: 10px 0;
     text-align: center;
-    border-bottom: 1px solid #333;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
 }
 
 .logo {
@@ -29,15 +38,12 @@ header {
 
 main {
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px 10px;
-    box-sizing: border-box;
+    padding: 80px 20px 20px;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .showcase {
-    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -45,13 +51,10 @@ main {
 
 .showcase-item {
     width: 100%;
-    max-width: 600px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    max-width: 100%;
+    height: auto;
     margin-bottom: 20px;
-    border-radius: 10px;
-    overflow: hidden;
+    position: relative;
 }
 
 .showcase-item video, .showcase-item img {
@@ -61,30 +64,38 @@ main {
 }
 
 .user-info {
-    text-align: center;
-    margin-top: 10px;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
 }
 
 .username {
     font-weight: bold;
-    color: #0f0;
 }
 
 .caption {
-    margin: 5px 0;
+    font-size: 14px;
 }
 
 footer {
     background-color: #000;
     border-top: 1px solid #333;
-    padding: 10px 0;
     text-align: center;
+    padding: 10px 0;
+    color: #0f0;
+    position: fixed;
     width: 100%;
+    bottom: 0;
+    z-index: 1000;
 }
 
 .bottom-nav {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
 }
 
@@ -93,21 +104,18 @@ footer {
     padding: 0;
     margin: 0;
     display: flex;
-    width: 100%;
-    justify-content: space-around;
+    gap: 30px;
 }
 
 .nav-links li {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: inline;
+    margin: 0 10px;
 }
 
 .nav-links li a {
     color: #fff;
     text-decoration: none;
-    font-size: 24px;
-    padding: 10px;
+    font-size: 18px;
     transition: color 0.3s;
 }
 
