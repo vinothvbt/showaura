@@ -3,8 +3,13 @@ body {
     margin: 0;
     padding: 0;
     background-color: #fafafa;
+    background-image: url('green.jpg'); /* Add your background image here */
+    background-size: cover; /* Cover the entire viewport */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent repeating the image */
     color: #333;
 }
+
 
 header {
     background-color: #000;
