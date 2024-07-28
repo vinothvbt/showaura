@@ -9,7 +9,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #fafafa;
+    background-color: #302f2f;
     color: #333;
 }
 
@@ -23,7 +23,7 @@ header {
     background-color: #000;
     border-bottom: 1px solid #333;
     padding: 10px 0;
-    text-align: center;
+    text-align: left;
     position: fixed;
     width: 100%;
     top: 0;
@@ -122,4 +122,44 @@ footer {
 
 .nav-links li a:hover {
     color: #0f0;
+}
+.showcase-item {
+    position: relative;
+    margin: 20px 0;
+}
+
+.action-buttons {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.like-icon, .comment-icon, .share-icon {
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.like-icon {
+    color: #fff;
+}
+
+.comment-icon {
+    color: #fff; /* Green color for comment button */
+}
+
+.share-icon {
+    color: #fff; /* Blue color for share button */
+}
+
+.like-icon.liked i {
+    color: #fff; /* Red color for liked state */
+    transform: scale(1.2); /* Slightly enlarge the icon */
+}
+
+.action-buttons i:hover {
+    transform: scale(1.1); /* Slightly enlarge icons on hover */
 }
