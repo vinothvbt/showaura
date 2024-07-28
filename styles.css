@@ -139,14 +139,13 @@ footer {
 header {
     background-color: #000;
     border-bottom: 1px solid #333;
-    padding: 10px 20px; /* Adjusted padding for better spacing */
-    text-align: left;
+    padding: 10px 20px; /* Adjust padding for spacing */
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
     display: flex;
-    justify-content: space-between; /* Distribute space between items */
+    justify-content: space-between; /* Align items */
     align-items: center; /* Center items vertically */
 }
 
@@ -169,12 +168,11 @@ header {
     font-size: 16px;
     text-decoration: none;
     border-radius: 5px;
-    margin-left: 30px; 
     transition: background-color 0.3s, color 0.3s;
+    margin-left: 20px; /* Add 20px left margin */
 }
 
 .about-us-button:hover {
     background-color: #fff;
     color: #000;
 }
-
