@@ -10,7 +10,7 @@ header {
     background-color: #000;
     border-bottom: 1px solid #333;
     padding: 10px 0;
-    text-align: center;
+    text-align: left;
     position: fixed;
     width: 100%;
     top: 0;
@@ -119,7 +119,8 @@ footer {
 .nav-links li a {
     color: #fff;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 24px;
+    padding: 10px;
     transition: color 0.3s;
 }
 
