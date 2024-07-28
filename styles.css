@@ -169,6 +169,7 @@ header {
     font-size: 16px;
     text-decoration: none;
     border-radius: 5px;
+    margin-left: 20px; 
     transition: background-color 0.3s, color 0.3s;
 }
 
