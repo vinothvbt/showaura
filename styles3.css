@@ -1,9 +1,9 @@
 body {
-    overflow-x: hidden; /* Prevent horizontal scroll */
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #000;
     color: #fff;
+    overflow-x: hidden;
 }
 
 #page-container {
@@ -27,25 +27,49 @@ header {
 
 main {
     flex: 1;
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 10px;
     box-sizing: border-box;
 }
 
 .showcase {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 20px;
 }
 
 .showcase-item {
     width: 100%;
     max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
-.showcase-item video, .showcase-item audio, .showcase-item img {
+.showcase-item video, .showcase-item img {
     width: 100%;
+    height: auto;
     border-radius: 10px;
+}
+
+.user-info {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.username {
+    font-weight: bold;
+    color: #0f0;
+}
+
+.caption {
+    margin: 5px 0;
 }
 
 footer {
