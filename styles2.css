@@ -108,6 +108,7 @@ footer {
     padding: 0;
     margin: 0;
     display: flex;
+    gap: 20px; /* Adjust the gap to add more space between buttons */
 }
 
 .nav-links li {
