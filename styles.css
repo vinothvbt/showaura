@@ -1,6 +1,7 @@
 /* General Styles */
 body {
     margin: 0;
+    padding :0;
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
     color: #333;
@@ -8,9 +9,9 @@ body {
 }
 
 header {
-    position: relative;
+    position: fixed;
     width: 100%;
-    background-color: #333;
+    background-color: black;
     color: #fff;
     padding: 15px 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -29,19 +30,16 @@ header {
     align-items: center;
 }
 
-.about-us-button, .profile-icon {
+.about-us-button {
     color: #fff;
     text-decoration: none;
-    margin-left: 15px;
+    margin-right: 30px;
     font-size: 1.2em;
 }
 
-.profile-icon {
-    font-size: 1.6em;
-}
 
 .hero-section {
-    background: linear-gradient(135deg, #4CAF50, #8BC34A);
+    background: linear-gradient(135deg, #77fa7c, #a8ff45);
     color: #fff;
     text-align: center;
     padding: 60px 20px;
@@ -110,7 +108,7 @@ header {
 }
 
 .leaderboard-entry:hover {
-    transform: scale(1.05);
+    transform: scale(1.5);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
@@ -139,7 +137,7 @@ header {
 }
 
 .bottom-nav {
-    background-color: #333;
+    background-color: black;
     color: #fff;
     padding: 10px;
     position: fixed;
@@ -153,6 +151,11 @@ header {
     padding: 0;
     display: flex;
     justify-content: center;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 30px;
 }
 
 .bottom-nav .nav-links li {
@@ -162,10 +165,19 @@ header {
 .bottom-nav .nav-links a {
     color: #fff;
     text-decoration: none;
-    font-size: 1.4em;
+    font-size: 27px;
+    padding: 10px;
     transition: color 0.3s;
 }
 
 .bottom-nav .nav-links a:hover {
     color: #4CAF50;
+}
+.about-us-button:hover{
+    background-color: #4CAF50;
+
+    color: #fff;
+    border-radius: 5%;
+    transition: background-color 0.3s;
+    transform: scale(1.05);
 }
