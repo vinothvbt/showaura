@@ -53,6 +53,11 @@ header {
     margin: 0 auto;
 }
 
+.hero-text {
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
 .cta-button {
     display: inline-block;
     background-color: #fff;
@@ -71,46 +76,50 @@ header {
 }
 
 .leaderboard-preview {
-    text-align: center;
     padding: 30px 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.section-title {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
 .leaderboard-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 10px 0;
 }
 
 .leaderboard-entry {
     display: flex;
     align-items: center;
-    background-color: #fff;
-    border-radius: 10px;
+    background-color: #f9f9f9;
+    border-radius: 15px;
     padding: 20px;
-    width: 80%;
-    max-width: 600px;
+    width: 250px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
+    flex-shrink: 0;
 }
 
 .leaderboard-entry:hover {
-    transform: translateY(-5px);
+    transform: scale(1.05);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-.rank-circle {
-    background: linear-gradient(135deg, #FFC107, #FF5722);
-    color: #fff;
-    border-radius: 50%;
+.profile-image {
     width: 60px;
     height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5em;
-    margin-right: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
 }
 
 .entry-details {
@@ -126,43 +135,7 @@ header {
 .entry-details p {
     margin: 5px 0;
     color: #666;
-}
-
-.featured-talents {
-    text-align: center;
-    padding: 30px 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.featured-talent {
-    margin: 20px 0;
-}
-
-.featured-talent img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.join-community {
-    text-align: center;
-    padding: 30px 20px;
-    background: linear-gradient(135deg, #FF5722, #FFC107);
-    color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.join-community h2 {
-    margin: 0;
-    font-size: 2em;
-}
-
-.join-community p {
-    margin: 10px 0;
+    font-size: 1.1em;
 }
 
 .bottom-nav {
