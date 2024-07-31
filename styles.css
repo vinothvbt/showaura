@@ -61,6 +61,7 @@ color: #77fa7c
     color: #fff;
     text-align: center;
    padding: 3% 3% 3% 3%;
+padding-top: 8%;
     border-radius: 0 0 20px 20px;
 }
 
@@ -71,7 +72,7 @@ color: #77fa7c
 }
 
 .hero-text {
-    font-size: 1.8em;
+    font-size: 2.5em;
     font-weight: bold;
 }
 .cta-button {
@@ -91,7 +92,7 @@ color: #77fa7c
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
+height 40%;
 }
 
 .section-title {
@@ -115,6 +116,7 @@ color: #77fa7c
     border-radius: 15px;
     padding: 20px;
     width: 250px;
+height:200px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
     flex-shrink: 0;
