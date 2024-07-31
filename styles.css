@@ -24,7 +24,8 @@ header {
     font-size: 1.3em;
     font-weight: bold;
     border: 2px solid #3eff44;
-    padding:0px 5px;
+    padding:3px 5px;
+    margin-left: 2vh;
     border-radius: 7px;
 }
 .logo-show {
@@ -61,7 +62,6 @@ color: #77fa7c
     color: #fff;
     text-align: center;
    padding: 3% 3% 3% 3%;
-padding-top: 8%;
     border-radius: 0 0 20px 20px;
 }
 
@@ -72,7 +72,7 @@ padding-top: 8%;
 }
 
 .hero-text {
-    font-size: 2.5em;
+    font-size: 1.8em;
     font-weight: bold;
 }
 .cta-button {
@@ -92,7 +92,7 @@ padding-top: 8%;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-height 40%;
+
 }
 
 .section-title {
@@ -116,7 +116,6 @@ height 40%;
     border-radius: 15px;
     padding: 20px;
     width: 250px;
-height:200px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
     flex-shrink: 0;
