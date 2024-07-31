@@ -58,7 +58,6 @@ color: #77fa7c
     background-size: cover; /* Cover the entire viewport */
     background-position: center; /* Center the background image */
     background-repeat: no-repeat;
-
     color: #fff;
     text-align: center;
    padding: 3% 3% 3% 3%;
@@ -88,7 +87,7 @@ color: #77fa7c
 }
 
 .leaderboard-preview {
-    padding:0;
+    padding:0%;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -97,16 +96,19 @@ color: #77fa7c
 
 .section-title {
     font-size: 1.5em;
+    margin-top: 2%;
     font-weight: bold;
-
     text-align: center;
 }
 
 .leaderboard-container {
     display: flex;
     overflow-x: auto;
+
     gap: 20px;
     padding: 10px 0;
+    padding-bottom: 10%;
+    padding-top: 1%;
 }
 
 .leaderboard-entry {
@@ -116,13 +118,14 @@ color: #77fa7c
     border-radius: 15px;
     padding: 20px;
     width: 250px;
+    height:100px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
     flex-shrink: 0;
 }
 
 .leaderboard-entry:hover {
-    transform: scale(1.5);
+    transform: scale(1.09);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
