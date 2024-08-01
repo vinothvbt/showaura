@@ -1,0 +1,239 @@
+/* General Styles */
+body {
+    margin: 0;
+    padding :0;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    background-image: url("green.jpg");
+    background-position: center;
+    background-repeat: repeat-y;
+    background-size: cover;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    background-color: black;
+    color: #fff;
+    border:1px gray solid  ;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.3em;
+    font-weight: bold;
+    border: 2px solid #3eff44;
+    padding:3px 5px;
+    margin-left: 2vh;
+    border-radius: 7px;
+}
+.logo-show {
+    color: #fff; /* Color for "Show" */
+}
+
+.logo-aura {
+color: #77fa7c
+}; /* Color for "Aura" */
+
+.header-actions {
+    display: flex;
+    align-items: center;
+}
+
+.about-us-button {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 2vh;
+    font-size: 1.2em;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.hero-section {
+   
+    color: #fff;
+    text-align: center;
+    padding-top: 1%;
+    border-radius: 0 0 20px 20px; 
+}
+.hero-content {
+    max-width: 1000px;
+    line-height:1px;
+    text-align: left;
+    margin-left: 7px;
+ 
+}
+.hero-small{
+    font-size: 2.2em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: left;
+    margin-left: 7px;
+    animation: slide 1s ;
+    animation-delay: 0.5s;
+}
+.hero-text {
+    font-size: 5.8em;
+    font-weight: bold;
+     text-shadow: 4px 4px 6px rgb(0, 0, 0);    
+   animation: slide 1s alternate;
+}
+@keyframes slide {
+    from{
+        transform: translateX(-300px);
+    }
+}
+
+.cta-button {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 1vh;
+    font-size: 1.2em;
+    transition: background-color 0.3s, color 0.3s;
+}
+.cta-button:hover {
+
+    color: #11ff00;
+}
+
+.leaderboard-preview {
+    padding:0%;
+    color: #f9f9f9;
+    border-radius: 5%x;
+    background-color: rgba(27, 27, 27, 0.493);
+    box-shadow: 0 4px 8px rgba(170, 170, 170, 0.801);
+    backdrop-filter: blur(10px); /* Apply the blur effect */
+animation: up 1s alternate;
+}
+@keyframes up{
+    0% {
+        transform: translateY(100px); /* Start position (off-screen) */
+        opacity: 0; /* Start invisible */
+    }
+    100% {
+        transform: translateY(0); /* End position (on-screen) */
+        opacity: 1; /* End visible */
+    }
+
+}
+.section-title {
+    font-size: 1.8em;
+    margin-top: 5%;
+    font-weight: bold;
+    text-align: center;
+    border: #333333 2px solid;
+    border-radius: 10px;
+    background: #00000070;
+    backdrop-filter: blur(10px); /* Apply the blur effect */ /* Adjust as needed */
+        color: #ffffff; /* Base text color */
+        text-shadow: 
+          0 0 5px #79ff40; /* Red glow */
+
+}
+
+.leaderboard-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 10px 0;
+    padding-bottom: 10%;
+    padding-top: 1%;
+}
+
+.leaderboard-entry {
+    display: flex;
+    align-items: center;
+    background-color: #000000;
+    border-radius: 15px;
+    padding: 20px;
+    width: 250px;
+    height:100px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    flex-shrink: 0;
+}
+
+.leaderboard-entry:hover {
+    transform: scale(1.09);
+    box-shadow: 0 6px 12px rgba(33, 245, 0, 0.645);
+}
+.small{
+    font-size: 1.2em;
+}
+.profile-image {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: #00ff00 3px solid;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.entry-details {
+    text-align: left;
+}
+
+.entry-details h3 {
+    margin: 0;
+    font-size: 1.4em;
+    color: #ffffff;
+}
+
+.entry-details p {
+    margin: 5px 0;
+    color: #22ff00;
+    font-size: 1.1em;
+}
+footer {
+    background-color: #000;
+    border-top: 1px solid #333;
+    text-align: center;
+    padding: 10px 0;
+    color: #0f0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    z-index: 1000;
+}
+
+.bottom-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-links {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 30px; /* Adjust the gap to add more space between buttons */
+}
+
+.nav-links li {
+    display: inline;
+    margin: 0 10px;
+}
+
+.nav-links li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 24px;
+    transition: color 0.3s;
+    padding: 10px;
+}
+
+.nav-links li a:hover {
+    color: #0f0;
+}
+
+.about-us-button:hover{
+    color: #00ff00;
+    border-radius: 5%;
+   
+}
+@media (min-width:600px){
+
+}
