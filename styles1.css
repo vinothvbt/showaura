@@ -2,12 +2,14 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #fafafa;
-    color: #333;
+    background-image: url("green.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: rgb(38, 38, 38);
+
 }
 
 header {
@@ -38,16 +40,29 @@ main {
     max-width: 500px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #ffffff;
+    color: white;
+    background-color: #00000072;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
+    animation: upl;
+    animation-duration: 1s;
+}
+@keyframes upl{
+    0% {
+        transform: translateY(100px); /* Start position (off-screen) */
+        opacity: 0; /* Start invisible */
+    }
+    100% {
+        transform: translateY(0); /* End position (on-screen) */
+        opacity: 1; /* End visible */
+    }
+
 }
 
 .upload-section h1 {
     font-size: 24px;
     margin-bottom: 20px;
-    color: #000;
+    color: #ffffff;
 }
 
 .upload-container {
@@ -70,17 +85,18 @@ main {
 }
 
 .file-drop-zone:hover {
-    background-color: #f0f0f0;
+    background-color: #66fe00a8;
 }
 
 .file-input-label {
     font-size: 18px;
-    color: #000;
+    color: #f6f6f6;
     text-align: center;
 }
 
 .preview-container {
     width: 100%;
+    color: white;
     margin-bottom: 20px;
 }
 
@@ -98,6 +114,8 @@ textarea {
     border: 1px solid #dbdbdb;
     border-radius: 5px;
     resize: none;
+    color: #dbdbdb;
+    background: rgba(20, 20, 19, 0.684);
     margin-bottom: 20px;
     font-size: 16px;
 }

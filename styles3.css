@@ -9,7 +9,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #302f2f;
+    background-color: #111010;
     color: #333;
 }
 
@@ -36,31 +36,38 @@ header {
     color: #0f0;
 }
 
-main {
+.main {
     flex: 1;
     padding: 80px 20px 20px;
     max-width: 900px;
     margin: 0 auto;
 }
 
-.showcase {
+.show {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    align-items: center; /* Center items horizontally */
+    padding: 20px; /* Add padding to the container */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
 .showcase-item {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 20px;
     position: relative;
+    width: 100%;
+    max-width: 360px; /* Limit the maximum width to fit portrait videos better */
+    height: auto;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 .showcase-item video, .showcase-item img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
+    width: 100%; /* Make sure it fills the container width */
+    height: auto; /* Maintain aspect ratio */
+    max-height: 640px; /* Set a maximum height to ensure videos don't grow too tall */
+    object-fit: contain; /* Ensure content fits without distortion */
+    border-radius: 10px; /* Optional: Add rounded corners */
+    display: block; /* Ensure videos and images are displayed correctly */
 }
 
 .user-info {
@@ -123,10 +130,6 @@ footer {
 .nav-links li a:hover {
     color: #0f0;
 }
-.showcase-item {
-    position: relative;
-    margin: 20px 0;
-}
 
 .action-buttons {
     position: absolute;
@@ -148,11 +151,11 @@ footer {
 }
 
 .comment-icon {
-    color: #fff; /* Green color for comment button */
+    color: #fff; /* Color for comment button */
 }
 
 .share-icon {
-    color: #fff; /* Blue color for share button */
+    color: #fff; /* Color for share button */
 }
 
 .like-icon.liked i {
@@ -163,7 +166,6 @@ footer {
 .action-buttons i:hover {
     transform: scale(1.1); /* Slightly enlarge icons on hover */
 }
-/* Add this to your existing CSS */
 
 .loading-indicator {
     display: none;
