@@ -71,8 +71,7 @@ color: #77fa7c
     margin-bottom: 20px;
     text-align: left;
     margin-left: 7px;
-    animation: slide 1s ;
-    animation-delay: 0.5s;
+    animation: slide 1.5s alternate;
 }
 .hero-text {
     font-size: 5.8em;
@@ -105,7 +104,7 @@ color: #77fa7c
     background-color: rgba(27, 27, 27, 0.493);
     box-shadow: 0 4px 8px rgba(170, 170, 170, 0.801);
     backdrop-filter: blur(10px); /* Apply the blur effect */
-animation: up 1s alternate;
+animation: up 1.5s alternate;
 }
 @keyframes up{
     0% {
