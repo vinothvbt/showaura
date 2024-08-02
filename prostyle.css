@@ -10,7 +10,7 @@ body {
     flex-direction: column;
     min-height: 100vh;
     background-image: url('green.jpg');
-    background-repeat: no-repeat;
+    background-repeat:repeat-y;
     background-size: cover;
     background-position: center;
     color: #333;
