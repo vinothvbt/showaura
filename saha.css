@@ -1,0 +1,48 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-image:url(green.jpg);
+}
+header {
+    background: #181;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+}
+h1 {
+    margin: 0;
+}
+.about-us {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    box-shadow: 0 0 10pxrgba(0, 0, 0, 0.1);
+}
+h2,h3 {
+    color: #181;
+}
+p {
+    color: black;
+}
+u1 {
+    list-style: none;
+    padding: 0;
+}
+u1 li {
+    background: chartreuse;
+    margin: 0.5rem 0;
+    padding: 1rem;
+    border-radius: 4px;
+}
+footer {
+    text-align: center;
+    padding: 1rem;
+    background: #181;
+    color: #fff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
