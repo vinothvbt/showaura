@@ -2,38 +2,212 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" 
-content="width=device-width,initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Showaura</title>
-    <link rel="stylesheet" href="saha.css">
+    <link rel="icon" type="image/png" href="purpleshowaura.png"> 
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        header {
+            display: flex;
+justify-content: center;
+align-items: center;
+            text-align: center;
+            background-color: #1d1d1d;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            max-width: fit-content;
+            padding: 2px;
+            margin-left: 3%;
+            animation: down 1.7s ease-out;
+            box-shadow: 0 10px 10px rgb(0, 0, 0);
+
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+            padding: 10px;
+            max-width: fit-content;
+            color: rgba(157, 0, 255, 0.8);
+        }
+        header h1 a{
+            font-size: 0.8em;
+            border-radius: 10%;
+            padding: 5px;
+            color: #8800ff;
+            text-decoration: none;
+            transition: all 0.3s ease-in-out;
+        }
+        header h1 a:hover {
+            transform: scale(1.4);
+            transform: translateY(5px);
+            color: rgb(255, 255, 255);
+        }
+        
+        .about-us {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 10px;
+        }
+
+        .content {
+            flex: 2;
+        }
+
+        .content h2 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            margin-left: 3%;
+
+            animation: vanish 1.4s normal forwards;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .content p {
+            line-height: 1.8;
+            font-weight: lighter;
+            font-size: 1rem;
+            margin-left: 4%;
+            opacity: 0;
+            animation: vanish 1.4s normal forwards;
+        }
+@keyframes vanish{
+    0% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+   
+    100% {
+        
+        opacity: 1;
+        transform: translateX(0);
+    }
+} 
+    
+
+        .logo {
+            flex: 1;
+            border-radius:50px;
+            width: 300px;
+            height: 300px;
+            text-align: center;
+            animation: swip 2s  ease;
+        }
+@keyframes swip {
+    0% {
+        padding: 20px;
+        transform: scale(2);
+        transform: translateX(-500%);
+    }
+    50% {
+        padding: 10px;
+        transform: scale(2);
+
+        transform: rotateZ(-45deg);
+    }
+    75% {
+        transform: scale(2);
+        transform: rotateZ(10deg);
+    }
+    100% {
+        transform: scale(0.7);
+        transform: rotateZ(0deg);
+        transform: translateX(0);
+    }
+    
+}
+
+        .logo img {
+            border-radius: 25%;
+            max-width: 300px;
+            height: auto;
+            z-index: 10;
+        }
+    
+        footer {
+            text-align: center;
+            padding: 5px;
+            background-color: #111111;
+            margin-top: 10px;
+          box-shadow: 0 10px 10px rgb(0, 0, 0);
+            animation: up 1s ease forwards;
+            opacity: 0;
+
+        }
+
+        footer p {
+            margin: 5px 0;
+            font-size: 1em;
+        }
+@keyframes up {
+    from{
+        opacity: 0;
+        transform: translateY(120%);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+}
+@keyframes down {
+    from{
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+}
+        .quote {
+            font-size: 2.3em;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: 20px;
+        }
+        .quoter {
+            font-size: 2.3em;
+            font-style: italic;
+            color: rgb(104, 104, 104);
+            margin-top: 5px;
+            margin-left: 70vw;
+        }
+        
+    </style>
 </head>
 <body>
     <header>
-        <h1>About Us</h1>
+        <h1>About Us </h1>
+        <h1><a href="index.html"><i class=" fas fa-home"></i></a></h1>
     </header>
     <section class="about-us">
-        <h2>Welcome to Showaura!</h2>
-        <p>Where talent meets opportunity! Our mission is to provide a global stage for individuals to
-            showcase their unique talents and connect with a vibrant community.</p>
-            <h3>What we offer</h3>
-            <u1>
-                <li><strong>Showcase Your Talent:</strong> Upload and share your performances.</li>
-                <li><strong>Discover Talent:</strong> Explore a diverse range of talents.</li>
-                <li><strong>Connect :</strong> Participate in competitions and get noticed.</li>
-                <li><strong>Leaderboard :</strong> Get to see your like based leaderboard and know who leads thr race</strong></li>
-
-            </u1>
-
-            <h3>Why Choose Us?</h3>
-            <u1>
-                <li><strong>User - Friendly:</strong> Easy navigation to focus on your talent.</li>
-                <li><strong>Supportive Community:</strong> Celebrate and grow together.</li>
-                <li><strong>Global Audiance:</strong> Share your talent with the world.</li>
-            </u1>
-            <h4>Join Us Today!</h4>
+        <div class="content">
+            <h2>Welcome to Showaura!</h2>
+            <p>Where talent meets opportunity! Our mission is to provide a global stage for individuals to showcase their unique talents and connect with a vibrant community. We offer you the chance to upload and share your performances with the world, explore a diverse range of talents, participate in competitions to get noticed by a global audience, and track your performance through our leaderboard. With an easy-to-navigate platform, a supportive community, and access to a global audience, we aim to celebrate creativity and innovation like never before. Showaura is brought to life by our passionate creator by Jeyashree Narayanan started as just a mini project now, it will show everyones hidden aura. let thier inner beast of art to show its Roar !.</p>
+        </div>
+        <div class="logo">
+            <img src="purpleshowaura.png" alt="Showaura Logo">
+        </div>
     </section>
+
     <footer>
-        <p>&copy; 2024 Showaura. All rights reserved.</p>
+        <p class="quote">“Every Talents is not a god's gift. it takes so many sleepless nights to buid it ”</p><br><p class="quoter">– Binotsuke</p> 
     </footer>
 </body>
 </html>

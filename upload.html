@@ -3,13 +3,239 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="purpleshowaura.png"> 
+
     <title>ShowAura - Upload Talent</title>
-    <link rel="stylesheet" href="styles1.css">
+<style>
+    body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1a1a1a;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+}
+
+header {
+    background-color: #181818;
+    padding: 10px 0;
+    text-align: left;
+    position: fixed;
+    width: fit-content;
+    top: 0;
+    z-index: 1000;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: 0 10px 10px black;
+    margin-left:3% ;
+    opacity: 0;
+    animation: down 1s ease forwards;
+
+}
+@keyframes down {
+    from{
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+}
+.logo {
+    font-size: 24px;
+    padding: 10px;
+    font-weight: bold;
+    color:rgb(157,0,255);
+}
+
+main {
+    flex: 1;
+    padding: 80px 20px 60px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    box-shadow: 0 10px 10px rgb(18, 18, 18) ;
+
+}
+
+.upload-section {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    color: white;
+    background-color: #000000;
+    border-radius: 10px;
+    text-align: center;
+    animation: upl;
+    animation-duration: 1s;
+        box-shadow: 0 10px 10px rgb(18, 18, 18) ;
+
+}
+@keyframes upl{
+    0% {
+        transform: translateY(100px); /* Start position (off-screen) */
+        opacity: 0; /* Start invisible */
+    }
+    100% {
+        transform: translateY(0); /* End position (on-screen) */
+        opacity: 1; /* End visible */
+    }
+
+}
+
+.upload-section h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.upload-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.file-drop-zone {
+    width: 30%;
+    height: 50px;
+    background-color: rgb(54, 54, 54);
+
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.file-drop-zone:hover {
+    background-color: rgb(157, 0, 255);
+}
+
+.file-input-label {
+    font-size: 18px;
+    color: #f6f6f6;
+    text-align: center;
+}
+
+.preview-container {
+    width: 100%;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.preview-container img,
+.preview-container video,
+.preview-container audio {
+    width: 100%;
+    border-radius: 10px;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border-style: none;
+    border-radius: 5px;
+    resize: none;
+    color: #dbdbdb;
+    background: rgba(20, 20, 19, 0.684);
+    margin-bottom: 20px;
+    font-size: 16px;
+    transition:all 0.5s ease-in-out ;
+}
+textarea:focus{
+    border-style: none;
+    box-shadow: 0 10px 10px rgb(21, 21, 21);
+}
+.cta-button {
+    width: 30%;
+    padding: 10px 20px;
+    background-color: rgb(157,0,255)0;
+    color: #000;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: background-color 0.3s ease-in-out;
+    font-size: 16px;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+}
+
+.cta-button i {
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+.cta-button:hover {
+    color: white;
+    background-color: rgb(157, 0, 255);
+    box-shadow: 0 10px 10px rgb(18, 18, 18) ;
+}
+.cta-button:active {
+    color: white;
+    transform: scale(0.9);
+    background-color: rgb(157, 0, 255);
+    box-shadow: 0 10px 10px rgb(18, 18, 18) ;
+}
+
+footer {
+    background-color: #000;
+    border-top: 1px solid #333;
+    text-align: center;
+    padding: 10px 0;
+    color: rgb(157,0,255);
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    z-index: 1000;
+}
+
+.bottom-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-links {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 30px; /* Adjust the gap to add more space between buttons */
+}
+
+.nav-links li {
+    display: inline;
+    margin: 0 10px;
+}
+
+.nav-links li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 24px;
+    transition: color 0.3s;
+    padding: 10px;
+}
+
+.nav-links li a:hover {
+    color: rgb(157,0,255);
+}
+
+</style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
-        <div class="logo">~New upload</div>
+        <div class="logo">New upload</div>
     </header>
     <main>
         <section class="upload-section">
@@ -17,7 +243,7 @@
             <div class="upload-container">
                 <div class="file-drop-zone" id="fileDropZone">
                     <input type="file" id="fileInput" accept="image/*,video/*,audio/*" hidden>
-                    <label for="fileInput" class="file-input-label"><i class="fas fa-upload"></i> Tap to Upload</label>
+                    <label for="fileInput" class="file-input-label"><i class="fas fa-upload"></i> select media</label>
                 </div>
                 <div class="preview-container" id="previewContainer">
                     <p>No file chosen</p>

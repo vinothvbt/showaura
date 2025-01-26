@@ -1,0 +1,29 @@
+ody {
+    font-family: Arial, sans-serif;
+    background-color: #1a1a1a;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
+}
+.wrapper{
+    position: fixed;
+    top: 0;
+    width: fit-content;
+    background-color: black;
+    border-bottom: #060c06;
+    color: rgb(157,0,255);
+    padding: 10px 20px;
+    box-sizing:border-box;
+    z-index: 1000;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+    .wrapper h1 {
+      font-family: monospace;
+        font-size: 24px;
+        margin: 0;
+        text-align: left;
+    }

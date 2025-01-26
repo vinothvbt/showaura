@@ -4,7 +4,233 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Showcase - ShowAura</title>
-    <link rel="stylesheet" href="styles3.css">
+    <link rel="icon" type="image/png" href="purpleshowaura.png"> 
+
+<style>
+    html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #111010;
+    color: #333;
+}
+
+#page-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+header {
+    background-color: #181818;
+    padding: 10px 0;
+    text-align: left;
+    position: fixed;
+    width: fit-content;
+    top: 0;
+    z-index: 1000;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: 0 10px 10px black;
+    margin-left:3% ;
+    opacity: 0;
+    animation: down 1s ease forwards;
+
+}
+@keyframes down {
+    from{
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+}
+.logo {
+    font-size: 24px;
+    padding: 10px;
+    font-weight: bold;
+    color:rgb(157,0,255);
+}
+
+
+.main {
+    flex: 1;
+    padding: 80px 20px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.show {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center; /* Center items horizontally */
+    padding: 20px; /* Add padding to the container */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.showcase-item {
+    position: relative;
+    width: 100%;
+    max-width: 360px; /* Limit the maximum width to fit portrait videos better */
+    height: auto;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.showcase-item video, .showcase-item img {
+    width: 100%; /* Make sure it fills the container width */
+    height: 90%; /* Maintain aspect ratio */
+    max-height: 640px; /* Set a maximum height to ensure videos don't grow too tall */
+    object-fit: contain; /* Ensure content fits without distortion */
+    border-radius: 10px; /* Optional: Add rounded corners */
+    display: block;
+box-shadow: 0 10px 10px black;
+}
+
+.user-info {
+    position: absolute;
+    bottom: 7%;
+    left: 10px;
+    background: rgba(0, 0, 0, 0.633);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.username {
+    font-weight: bold;
+}
+
+.caption {
+    font-size: 14px;
+}
+
+footer {
+    background-color: #000;
+    text-align: center;
+    padding: 10px 0;
+    color:rgb(157,0,255);
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    z-index: 1000;
+}
+
+.bottom-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-links {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links li {
+    display: inline;
+    margin: 0 10px;
+}
+
+.nav-links li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 24px;
+    padding: 10px;
+    transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+    color:rgb(157,0,255);
+}
+
+.action-buttons {
+    position: absolute;
+    border-radius:30px;
+    padding: 5px;
+    background-color: #18181833;
+    backdrop-filter: blur(10px);
+    bottom: 10%;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.like-icon, .comment-icon, .share-icon {
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.like-icon {
+    color: #fff;
+}
+
+.comment-icon {
+    color: #fff; /* Color for comment button */
+}
+
+.share-icon {
+    color: #fff; /* Color for share button */
+}
+
+.like-icon.liked i {
+    color: rgb(255, 58, 23); /* Red color for liked state */
+    transform: scale(1.2); /* Slightly enlarge the icon */
+}
+
+.action-buttons i:hover {
+    transform: scale(1.1); /* Slightly enlarge icons on hover */
+}
+
+.loading-indicator {
+    display: none;
+    text-align: center;
+    padding: 10px;
+}
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-top: 4px solid rgb(157,0,255);
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    50%{
+        border-top: 4px dotted rgb(157,0,255);
+
+        transform: rotate(180deg);
+    }
+    70%{
+        border-top: 4px dotted rgb(157,0,255);
+
+    }
+    100% { transform: rotate(360deg); }
+}
+
+</style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>

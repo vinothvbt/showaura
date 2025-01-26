@@ -3,19 +3,31 @@ body {
     margin: 0;
     padding :0;
     font-family: 'Arial', sans-serif;
-    color: #333;
-    background-image: url("green.jpg");
-    background-position: center;
-    background-repeat: repeat-y;
-    background-size: cover;
+    color: #1a1a1a;
+    background-image: url(—Pngtree—nightclub\ ktv\ party\ crowd\ silhouette_5765928.png);
+    background-position:right;
+    background-color: #000000;
+    background-size: 40%;
+    background-attachment: fixed;
+    background-repeat:no-repeat;
+    overflow: hidden;
+    animation: backgrounda 1s ease-out;
 }
-
+@keyframes backgrounda {
+    from{
+        background-position: top,left;
+    }
+    to{
+        background-position: right;
+    }
+}
 header {
     position: fixed;
     width: 100%;
+    z-index: 1000;
+    padding: 5px;
     background-color: black;
     color: #fff;
-    border:1px gray solid  ;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: space-between;
@@ -25,7 +37,7 @@ header {
 .logo {
     font-size: 1.3em;
     font-weight: bold;
-    border: 2px solid #3eff44;
+    border: 2px solid rgb(157, 0, 255);
     padding:3px 5px;
     margin-left: 2vh;
     border-radius: 7px;
@@ -35,8 +47,8 @@ header {
 }
 
 .logo-aura {
-color: #77fa7c
-}; /* Color for "Aura" */
+color: rgb(157, 0, 255);
+} /* Color for "Aura" */
 
 .header-actions {
     display: flex;
@@ -46,69 +58,55 @@ color: #77fa7c
 .about-us-button {
     color: #fff;
     text-decoration: none;
-    margin-right: 2vh;
+    margin-right: 5vh;
     font-size: 1.2em;
+    border: 3px sol1d rgb(157,0, 255);
     transition: background-color 0.3s, color 0.3s;
 }
 
 .hero-section {
-   
+    display: flex;
+    margin-top:10px;
+    justify-content: flex-start;
+    flex-direction: column;
+    justify-content: center;
     color: #fff;
     text-align: center;
-    padding-top: 1%;
     border-radius: 0 0 20px 20px; 
 }
 .hero-content {
-    max-width: 1000px;
-    line-height:1px;
+    margin-top:5%;
     text-align: left;
-    margin-left: 7px;
+    margin-left:7%;
  
 }
 .hero-small{
+    margin:0;
     font-size: 2.2em;
     font-weight: bold;
-    margin-bottom: 20px;
     text-align: left;
-    margin-left: 7px;
-    animation: slide 1.5s alternate;
+    color: #757575;
+    opacity: 0;
+    animation: slide 1.5s forwards;
 }
 .hero-text {
+    margin:0;
     font-size: 5.8em;
     font-weight: bold;
-     text-shadow: 4px 4px 6px rgb(0, 0, 0);    
-   animation: slide 1s alternate;
+   animation: slide 1s forwards;
 }
-@keyframes slide {
-    from{
-        transform: translateX(-300px);
-    }
+.hero-nav{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 7%;
+    opacity: 0;
+    animation: down 1s 0.5s ease-in-out forwards;
 }
-
-.cta-button {
-    color: #fff;
-    text-decoration: none;
-    margin-right: 1vh;
-    font-size: 1.2em;
-    transition: background-color 0.3s, color 0.3s;
-}
-.cta-button:hover {
-
-    color: #11ff00;
-}
-
-.leaderboard-preview {
-    padding:0%;
-    color: #f9f9f9;
-    border-radius: 5%x;
-    background-color: rgba(27, 27, 27, 0.493);
-    box-shadow: 0 4px 8px rgba(170, 170, 170, 0.801);
-    backdrop-filter: blur(10px); /* Apply the blur effect */
-animation: up 1.5s alternate;
-}
-@keyframes up{
+@keyframes down{
     0% {
-        transform: translateY(100px); /* Start position (off-screen) */
+        transform: translateY(-100px); /* Start position (off-screen) */
         opacity: 0; /* Start invisible */
     }
     100% {
@@ -117,36 +115,93 @@ animation: up 1.5s alternate;
     }
 
 }
+.hero-nav a{
+    font-size: 1.3em;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+    border: 1px solid white;
+    padding: 10px;
+    margin-right: 2%;
+    border-radius: 25px;
+    transition: all 0.2s ease-in-out;
+}
+.hero-nav a:nth-child(1){
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s;
+    border-style:none ;
+
+    background-color: rgb(157, 0, 255);
+    padding: 10px;
+    border-radius: 25px;
+    transition: all 0.5s ease-in-out;
+
+}
+
+.hero-nav a:hover{
+    background-color: white;
+    color: #000000;
+}
+@keyframes slide {
+    from{
+        opacity: 0;
+        transform: translateX(-300px);
+        text-shadow: 4px 4px 6px rgb(12, 12, 12);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0);
+        text-shadow: 4px 4px 6px rgb(0, 0, 0);
+    }
+}
+
+.cta-button {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 3vh;
+    font-size: 1.2em;
+    transition: background-color 0.3s, color 0.3s;
+}
+.cta-button:hover {
+
+    color: rgb(157, 0, 255);
+}
+
+.leaderboard-preview {
+    padding:0%;
+    color: #f9f9f9;
+    border-radius: 5%;
+   
+    backdrop-filter: blur(10px); /* Apply the blur effect */
+animation: up 1s alternate;
+}
+
 .section-title {
     font-size: 1.8em;
-    margin-top: 5%;
+    margin-top: 0;
     font-weight: bold;
     text-align: center;
-    border: #333333 2px solid;
     border-radius: 10px;
-    background: #00000070;
-    backdrop-filter: blur(10px); /* Apply the blur effect */ /* Adjust as needed */
+    backdrop-filter: blur(0); /* Apply the blur effect */ /* Adjust as needed */
         color: #ffffff; /* Base text color */
-        text-shadow: 
-          0 0 5px #79ff40; /* Red glow */
-
+        
 }
 
 .leaderboard-container {
     display: flex;
-    overflow-x: auto;
+    justify-content:center;
     gap: 20px;
-    padding: 10px 0;
-    padding-bottom: 10%;
     padding-top: 1%;
+    animation: up 1s ease-in forwards;
 }
 
 .leaderboard-entry {
     display: flex;
     align-items: center;
-    background-color: #000000;
+    background-color: #1f1f1f;
     border-radius: 15px;
-    padding: 20px;
+    padding: 30px;
     width: 250px;
     height:100px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -156,7 +211,7 @@ animation: up 1.5s alternate;
 
 .leaderboard-entry:hover {
     transform: scale(1.09);
-    box-shadow: 0 6px 12px rgba(33, 245, 0, 0.645);
+    box-shadow: 0 6px 12px rgb(0, 0, 0);
 }
 .small{
     font-size: 1.2em;
@@ -165,7 +220,7 @@ animation: up 1.5s alternate;
     width: 90px;
     height: 90px;
     border-radius: 50%;
-    border: #00ff00 3px solid;
+    border: rgb(157, 0, 255) 3px solid;
     object-fit: cover;
     margin-right: 15px;
 }
@@ -182,15 +237,31 @@ animation: up 1.5s alternate;
 
 .entry-details p {
     margin: 5px 0;
-    color: #22ff00;
+    color: rgb(128, 128, 128);
     font-size: 1.1em;
+}
+.entry-details span{
+    margin: 5px 0;
+    color: rgb(247, 0, 255);
+    font-size: 1.2em;
+}
+@keyframes up {
+    from{
+        opacity: 0;
+        transform: translateY(100%);
+        text-shadow: 4px 4px 6px rgb(12, 12, 12);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0);
+        text-shadow: 4px 4px 6px rgb(0, 0, 0);
+    }
 }
 footer {
     background-color: #000;
-    border-top: 1px solid #333;
     text-align: center;
     padding: 10px 0;
-    color: #0f0;
+    color: rgb(157, 0, 255);
     position: fixed;
     width: 100%;
     bottom: 0;
@@ -225,11 +296,11 @@ footer {
 }
 
 .nav-links li a:hover {
-    color: #0f0;
+    color: rgb(157, 0, 255);
 }
 
 .about-us-button:hover{
-    color: #00ff00;
+    color: rgb(157, 0, 255);
     border-radius: 5%;
    
 }
@@ -261,7 +332,7 @@ header {
 .logo {
     font-size: 1.3em;
     font-weight: bold;
-    border: 2px solid #3eff44;
+    border: 2px solid rgb(157, 0, 255);
     padding:3px 5px;
     margin-left: 2vh;
     border-radius: 7px;
@@ -271,8 +342,8 @@ header {
 }
 
 .logo-aura {
-color: #77fa7c
-}; /* Color for "Aura" */
+color: #77fa7c;
+} /* Color for "Aura" */
 
 .header-actions {
     display: flex;
@@ -309,7 +380,8 @@ color: #77fa7c
     width:100%;
     height:5%;
     margin-bottom: 0px;
-    animation: slide 1.5s alternate;
+    animation: slide 1s ;
+    animation-delay: 0.5s;
 }
 .hero-text {
     font-size: 4.4em;
@@ -334,7 +406,7 @@ color: #77fa7c
 }
 .cta-button:hover {
 
-    color: #11ff00;
+    color: rgb(157, 0, 255);
 }
 
 .leaderboard-preview {
@@ -344,7 +416,7 @@ color: #77fa7c
     background-color: rgba(27, 27, 27, 0.493);
     box-shadow: 0 4px 8px rgba(170, 170, 170, 0.801);
     backdrop-filter: blur(10px); /* Apply the blur effect */
-animation: up 1.5s alternate;
+animation: up 1s alternate;
 }
 @keyframes up{
     0% {
@@ -367,11 +439,8 @@ animation: up 1.5s alternate;
     background: #00000070;
     backdrop-filter: blur(10px); /* Apply the blur effect */ /* Adjust as needed */
         color: #ffffff; /* Base text color */
-        text-shadow: 
-          0 0 5px #79ff40; /* Red glow */
-
+        
 }
-
 .leaderboard-container {
     display: flex;
     overflow-x: auto;
@@ -397,7 +466,7 @@ animation: up 1.5s alternate;
 
 .leaderboard-entry:hover {
     transform: scale(1.09);
-    box-shadow: 0 6px 12px rgba(33, 245, 0, 0.645);
+    box-shadow: 0 6px 12px rgb(157, 0, 255);
 }
 .small{
     font-size: 1.2em;
@@ -406,7 +475,7 @@ animation: up 1.5s alternate;
     width: 90px;
     height: 90px;
     border-radius: 50%;
-    border: #00ff00 3px solid;
+    border: rgb(157, 0, 255) 3px solid;
     object-fit: cover;
     margin-right: 15px;
 }
@@ -423,15 +492,14 @@ animation: up 1.5s alternate;
 
 .entry-details p {
     margin: 5px 0;
-    color: #22ff00;
+    color: rgb(157, 0, 255);
     font-size: 1.1em;
 }
 footer {
     background-color: #000;
-    border-top: 1px solid #333;
     text-align: center;
     padding: 10px 0;
-    color: #0f0;
+    color: rgb(157, 0, 255);
     position: fixed;
     width: 100%;
     bottom: 0;
@@ -466,11 +534,11 @@ footer {
 }
 
 .nav-links li a:hover {
-    color: #0f0;
+    color: rgb(157, 0, 255);
 }
 
 .about-us-button:hover{
-    color: #00ff00;
+    color: rgb(157, 0, 255);
     border-radius: 5%;
    
 }
