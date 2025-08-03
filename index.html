@@ -31,39 +31,8 @@
         </section>
         <section class="leaderboard-preview" id="skill">
             <h2 class="section-title">Skillet of the day</h2>
-            <div class="leaderboard-container">
-                <div class="leaderboard-entry">
-                    <img src="bio2.jpeg" alt="Profile Image 1" class="profile-image">
-                    <div class="entry-details">
-                        <h3>monk@alive</h3>
-                        <p>Kungfu</p>
-                        <p><span>1000</span> Aura</p>
-                    </div>
-                </div>
-                <div class="leaderboard-entry">
-                    <img src="himawari.jpeg" alt="Profile Image 2" class="profile-image">
-                    <div class="entry-details">
-                        <h3>~Himawari006</h3>
-                        <p>Drawing</p>
-                        <p><span>900</span> Aura </p>
-                    </div>
-               </div>
-                <div class="leaderboard-entry">
-                    <img src="bino1.jpeg" alt="Profile Image 3" class="profile-image">
-                    <div class="entry-details">
-                        <h3>binotsuke1407</h3>
-                        <p>Painting</p>
-                        <p><span>800</span> Aura</p>
-                    </div>
-                </div>
-                <div class="leaderboard-entry">
-                    <img src="bino.jpeg" alt="Profile Image 4" class="profile-image">
-                    <div class="entry-details">
-                        <h3>Daylight@24</h3>
-                        <p>drawing</p>
-                        <p><span>700</span> Aura</p>
-                    </div>
-                </div>
+            <div class="leaderboard-container" id="leaderboardContainer">
+                <!-- Leaderboard entries will be loaded here -->
             </div>
         </section>
     </main>
@@ -77,5 +46,68 @@
             </ul>
         </nav>
     </footer>
+    <script>
+        // Load leaderboard data on page load
+        window.addEventListener('load', async () => {
+            try {
+                const response = await fetch('/api/leaderboard?limit=4');
+                const data = await response.json();
+                
+                if (response.ok) {
+                    displayLeaderboard(data.leaderboard);
+                }
+            } catch (error) {
+                console.error('Error loading leaderboard:', error);
+                // Fallback to static content if API fails
+            }
+
+            // Update navigation based on login status
+            updateNavigation();
+        });
+
+        function displayLeaderboard(users) {
+            const container = document.getElementById('leaderboardContainer');
+            container.innerHTML = '';
+
+            const defaultImages = ['bio2.jpeg', 'himawari.jpeg', 'bino1.jpeg', 'bino.jpeg'];
+            
+            users.forEach((user, index) => {
+                const entry = document.createElement('div');
+                entry.className = 'leaderboard-entry';
+                
+                const profileImage = user.profile_image || defaultImages[index] || 'purpleshowaura.png';
+                
+                entry.innerHTML = `
+                    <img src="${profileImage}" alt="Profile Image" class="profile-image">
+                    <div class="entry-details">
+                        <h3>${user.username}</h3>
+                        <p>${user.bio || 'ShowAura User'}</p>
+                        <p><span>${user.aura_points}</span> Aura</p>
+                    </div>
+                `;
+                
+                container.appendChild(entry);
+            });
+        }
+
+        function updateNavigation() {
+            const token = localStorage.getItem('token');
+            const user = JSON.parse(localStorage.getItem('user') || '{}');
+            
+            const profileLink = document.querySelector('a[href="profie.html"]');
+            const loginLink = document.querySelector('a[href="login.html"]');
+            
+            if (token && user.username) {
+                profileLink.innerHTML = `<i class="fas fa-user"></i> ${user.username}`;
+                loginLink.innerHTML = 'Logout';
+                loginLink.href = '#';
+                loginLink.onclick = () => {
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('user');
+                    window.location.reload();
+                };
+            }
+        }
+    </script>
 </body>
 </html>

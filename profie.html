@@ -215,6 +215,81 @@ main {
     border-radius: 10px;
 }
 
+.post-item {
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.post-item:hover {
+    transform: scale(1.05);
+}
+
+.post-item video {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.post-overlay {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+}
+
+.audio-post {
+    background: rgba(157, 0, 255, 0.1);
+    border: 2px solid rgb(157, 0, 255);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    color: rgb(157, 0, 255);
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.audio-post i {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    background: rgba(20, 20, 19, 0.8);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.stat {
+    text-align: center;
+    color: white;
+}
+
+.stat-number {
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+    color: rgb(157, 0, 255);
+}
+
+.stat-label {
+    font-size: 14px;
+    color: #ccc;
+}
+
 footer {
     background-color: #000;
     text-align: center;
@@ -300,19 +375,13 @@ button:active{
                     </form>
 
                 </div>
+                <div class="stats">
+                    <!-- Stats will be loaded dynamically -->
+                </div>
                 <div class="posts">
                     <h2>Posts</h2>
                     <div class="posts-grid">
-                        <div class="post-item">
-                            <img src="4.jpg" alt="Post 1">
-                        </div>
-                        <div class="post-item">
-                            <img src="5.jpg" alt="Post 2">
-                        </div>
-                        <div class="post-item">
-                            <img src="6.jpg" alt="Post 3">
-                        </div>
-                        <!-- Add more post items as needed -->
+                        <!-- Posts will be loaded dynamically -->
                     </div>
                 </div>
             </section>

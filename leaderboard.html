@@ -201,89 +201,8 @@ footer {
     <main>
         <section class="leaderboard-section">
             <h2>Top 10 Auras</h2>
-            <div class="leaderboard">
-                <!-- Placeholder leaderboard items -->
-                <div class="leaderboard-item">
-                    <div class="rank">1</div>
-                    <div class="user-info">
-                        <div class="username">monk@alive</div>
-                        <div class="talent-type">kungfu</div>
-                    </div>
-                    <div class="score">1000 aura</div>
-                </div>
-                <div class="leaderboard-item">
-                    <div class="rank">2</div>
-                    <div class="user-info">
-                        <div class="username">Hmawari006</div>
-                        <div class="talent-type">drawing</div>
-                    </div>
-                    <div class="score">800 aura</div>
-                </div>
-                <div class="leaderboard-item">
-                    <div class="rank">3</div>
-                    <div class="user-info">
-                        <div class="username">Binotsuke1407</div>
-                        <div class="talent-type">painting</div>
-                    </div>
-                    <div class="score">700 aura</div>
-                </div>
-                <div class="leaderboard-item">
-                    <div class="rank">4</div>
-                    <div class="user-info">
-                        <div class="username">Daylight@24</div>
-                        <div class="talent-type">Drawing</div>
-                    </div>
-                    <div class="score">600 aura</div>
-                </div>
-                <div class="leaderboard-item">
-                    <div class="rank">5</div>
-                    <div class="user-info">
-                        <div class="username">Username</div>
-                        <div class="talent-type">Talent Type</div>
-                    </div>
-                    <div class="score">1234 aura</div>
-                </div>
-                <div class="leaderboard-item">
-                    <div class="rank">6</div>
-                    <div class="user-info">
-                        <div class="username">Username</div>
-                        <div class="talent-type">Talent Type</div>
-                    </div>
-                    <div class="score">1234 aura</div>
-                </div>
-                <div class="leaderboard-item">
-                    <div class="rank">7</div>
-                    <div class="user-info">
-                        <div class="username">Username</div>
-                        <div class="talent-type">Talent Type</div>
-                    </div>
-                    <div class="score">1234 aura</div>
-                </div>
-                <div class="leaderboard-item">
-                    <div class="rank">8</div>
-                    <div class="user-info">
-                        <div class="username">Username</div>
-                        <div class="talent-type">Talent Type</div>
-                    </div>
-                    <div class="score">1234 aura</div>
-                </div>
-                <div class="leaderboard-item">
-                    <div class="rank">9</div>
-                    <div class="user-info">
-                        <div class="username">Username</div>
-                        <div class="talent-type">Talent Type</div>
-                    </div>
-                    <div class="score">1234 aura</div>
-                </div>
-                <div class="leaderboard-item">
-                    <div class="rank">10</div>
-                    <div class="user-info">
-                        <div class="username">Username</div>
-                        <div class="talent-type">Talent Type</div>
-                    </div>
-                    <div class="score">1234 aura</div>
-                </div>
-                <!-- Add more placeholder items as needed -->
+            <div class="leaderboard" id="leaderboardContainer">
+                <!-- Leaderboard items will be loaded here -->
             </div>
         </section>
     </main>
@@ -297,5 +216,41 @@ footer {
             </ul>
         </nav>
     </footer>
+    <script>
+        // Load leaderboard data on page load
+        window.addEventListener('load', async () => {
+            try {
+                const response = await fetch('/api/leaderboard?limit=10');
+                const data = await response.json();
+                
+                if (response.ok) {
+                    displayLeaderboard(data.leaderboard);
+                }
+            } catch (error) {
+                console.error('Error loading leaderboard:', error);
+            }
+        });
+
+        function displayLeaderboard(users) {
+            const container = document.getElementById('leaderboardContainer');
+            container.innerHTML = '';
+            
+            users.forEach((user, index) => {
+                const item = document.createElement('div');
+                item.className = 'leaderboard-item';
+                
+                item.innerHTML = `
+                    <div class="rank">${index + 1}</div>
+                    <div class="user-info">
+                        <div class="username">${user.username}</div>
+                        <div class="talent-type">${user.bio || 'ShowAura User'}</div>
+                    </div>
+                    <div class="score">${user.aura_points} aura</div>
+                `;
+                
+                container.appendChild(item);
+            });
+        }
+    </script>
 </body>
 </html>

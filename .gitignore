@@ -4,27 +4,42 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# Database
+*.db
+*.sqlite
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production
+.env.production.local
+
+# Uploads
+uploads/
+
 # Build outputs
 dist/
 build/
 *.min.css
 *.min.js
 
-# Environment files
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+# Logs
+logs/
+*.log
 
-# IDE files
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
 
-# OS files
+# Coverage directory used by tools like istanbul
+coverage/
+.nyc_output
+
+# OS generated files
 .DS_Store
 .DS_Store?
 ._*
@@ -33,13 +48,59 @@ build/
 ehthumbs.db
 Thumbs.db
 
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
 # Temporary files
+tmp/
+temp/
 *.tmp
 *.temp
 .cache/
 
-# Logs
-*.log
+# Media files (should be uploaded to proper storage)
+*.mp4
+*.webm
+*.avi
+*.mov
+*.mkv
+*.flv
+*.wmv
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.bmp
+*.tiff
+*.svg
+*.ico
+*.mp3
+*.wav
+*.ogg
+*.flac
+*.aac
+*.wma
+*.m4a
+
+# Document files
+*.doc
+*.docx
+*.pdf
+*.txt
+*.rtf
+*.odt
+
+# Executable files
+*.exe
+*.msi
+*.dmg
+*.pkg
+*.deb
+*.rpm
 
 # Backup files
 *-old.*
@@ -49,12 +110,12 @@ Thumbs.db
 # CSS source maps
 *.css.map
 
-# Test coverage
-coverage/
-.nyc_output
+# macOS specific
+.DS_Store
+.AppleDouble
+.LSOverride
 
-# Runtime data
-pids
-*.pid
-*.seed
-*.pid.lock
+# Windows specific  
+Thumbs.db
+ehthumbs.db
+Desktop.ini
