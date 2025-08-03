@@ -30,6 +30,16 @@ document.addEventListener('DOMContentLoaded', function () {
                     // Toggle the 'liked' class
                     this.classList.toggle('liked');
                     
+                    // Find the heart icon and toggle its style
+                    const heartIcon = this.querySelector('i');
+                    if (this.classList.contains('liked')) {
+                        heartIcon.className = 'fas fa-heart'; // Filled heart
+                        heartIcon.style.color = '#ff3a17';
+                    } else {
+                        heartIcon.className = 'far fa-heart'; // Outline heart
+                        heartIcon.style.color = '';
+                    }
+                    
                     // Update like count if element exists
                     const likeCountElement = this.closest('.post-meta')?.querySelector('.likes');
                     if (likeCountElement) {
@@ -57,13 +67,18 @@ document.addEventListener('DOMContentLoaded', function () {
         icon.addEventListener('click', function () {
             const postId = this.closest('[data-post-id]')?.getAttribute('data-post-id');
             
-            // For now, show a simple prompt for comments
-            // This could be expanded to show a comment modal or redirect to a detailed view
-            const comment = prompt('Add a comment:');
-            if (comment && comment.trim()) {
-                // TODO: Implement comment API endpoint
-                alert('Comment functionality will be available in the next update!');
-            }
+            // Handle comment button click with modern UI feedback
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = '';
+                // For now, show a simple prompt for comments
+                // This could be expanded to show a comment modal or redirect to a detailed view
+                const comment = prompt('Add a comment:');
+                if (comment && comment.trim()) {
+                    // TODO: Implement comment API endpoint
+                    alert('Comment functionality will be available in the next update!');
+                }
+            }, 150);
         });
     });
 
@@ -73,22 +88,29 @@ document.addEventListener('DOMContentLoaded', function () {
             const postElement = this.closest('.showcase-item');
             const title = postElement?.querySelector('h3')?.textContent || 'Check out this talent on ShowAura!';
             
-            // Use Web Share API if available, otherwise fallback to clipboard
-            if (navigator.share) {
-                navigator.share({
-                    title: title,
-                    url: `${window.location.origin}/post/${postId}`
-                }).catch(err => console.log('Error sharing:', err));
-            } else {
-                // Fallback: copy to clipboard
-                const shareUrl = `${window.location.origin}/post/${postId}`;
-                navigator.clipboard.writeText(shareUrl).then(() => {
-                    alert('Share link copied to clipboard!');
-                }).catch(() => {
-                    // Final fallback
-                    prompt('Copy this link to share:', shareUrl);
-                });
-            }
+            // Handle share button click with modern UI feedback
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = '';
+                
+                // Use Web Share API if available, otherwise fallback to clipboard
+                if (navigator.share) {
+                    navigator.share({
+                        title: title,
+                        text: 'Amazing talent showcase',
+                        url: `${window.location.origin}/post/${postId}`
+                    }).catch(err => console.log('Error sharing:', err));
+                } else {
+                    // Fallback: copy to clipboard
+                    const shareUrl = `${window.location.origin}/post/${postId}`;
+                    navigator.clipboard.writeText(shareUrl).then(() => {
+                        alert('Share link copied to clipboard!');
+                    }).catch(() => {
+                        // Final fallback
+                        prompt('Copy this link to share:', shareUrl);
+                    });
+                }
+            }, 150);
         });
     });
 });

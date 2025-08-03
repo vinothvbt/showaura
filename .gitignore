@@ -9,11 +9,21 @@ yarn-error.log*
 *.sqlite
 
 # Environment variables
+.env
 .env.local
+.env.development.local
+.env.test.local
 .env.production
+.env.production.local
 
 # Uploads
 uploads/
+
+# Build outputs
+dist/
+build/
+*.min.css
+*.min.js
 
 # Logs
 logs/
@@ -27,6 +37,7 @@ pids/
 
 # Coverage directory used by tools like istanbul
 coverage/
+.nyc_output
 
 # OS generated files
 .DS_Store
@@ -47,6 +58,9 @@ Thumbs.db
 # Temporary files
 tmp/
 temp/
+*.tmp
+*.temp
+.cache/
 
 # Media files (should be uploaded to proper storage)
 *.mp4
@@ -87,6 +101,14 @@ temp/
 *.pkg
 *.deb
 *.rpm
+
+# Backup files
+*-old.*
+*.backup
+*.bak
+
+# CSS source maps
+*.css.map
 
 # macOS specific
 .DS_Store
