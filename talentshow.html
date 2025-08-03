@@ -6,390 +6,406 @@
     <title>Showcase - ShowAura</title>
     <link rel="icon" type="image/png" href="purpleshowaura.png"> 
 
-<style>
-    html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: 'Arial', sans-serif;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background-color: #111010;
-    color: #333;
-}
-
-#page-container {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-}
-
-header {
-    background-color: #181818;
-    padding: 10px 0;
-    text-align: left;
-    position: fixed;
-    width: fit-content;
-    top: 0;
-    z-index: 1000;
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
-    box-shadow: 0 10px 10px black;
-    margin-left:3% ;
-    opacity: 0;
-    animation: down 1s ease forwards;
-
-}
-@keyframes down {
-    from{
-        opacity: 0;
-        transform: translateY(-100%);
-    }
-    to{
-        opacity: 1;
-        transform: translateY(0);
-    }
-    
-}
-.logo {
-    font-size: 24px;
-    padding: 10px;
-    font-weight: bold;
-    color:rgb(157,0,255);
-}
-
-
-.main {
-    flex: 1;
-    padding: 80px 20px 20px;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.show {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center; /* Center items horizontally */
-    padding: 20px; /* Add padding to the container */
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
-}
-
-.showcase-item {
-    position: relative;
-    width: 100%;
-    max-width: 360px; /* Limit the maximum width to fit portrait videos better */
-    height: auto;
-    margin-top: 10px;
-    margin-bottom: 20px;
-}
-
-.showcase-item video, .showcase-item img {
-    width: 100%; /* Make sure it fills the container width */
-    height: 90%; /* Maintain aspect ratio */
-    max-height: 640px; /* Set a maximum height to ensure videos don't grow too tall */
-    object-fit: contain; /* Ensure content fits without distortion */
-    border-radius: 10px; /* Optional: Add rounded corners */
-    display: block;
-box-shadow: 0 10px 10px black;
-}
-
-.user-info {
-    position: absolute;
-    bottom: 7%;
-    left: 10px;
-    background: rgba(0, 0, 0, 0.633);
-    backdrop-filter: blur(10px);
-    color: #fff;
-    padding: 5px;
-    border-radius: 5px;
-}
-
-.username {
-    font-weight: bold;
-}
-
-.caption {
-    font-size: 14px;
-}
-
-footer {
-    background-color: #000;
-    text-align: center;
-    padding: 10px 0;
-    color:rgb(157,0,255);
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-    z-index: 1000;
-}
-
-.bottom-nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.nav-links {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    gap: 30px;
-}
-
-.nav-links li {
-    display: inline;
-    margin: 0 10px;
-}
-
-.nav-links li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 24px;
-    padding: 10px;
-    transition: color 0.3s;
-}
-
-.nav-links li a:hover {
-    color:rgb(157,0,255);
-}
-
-.action-buttons {
-    position: absolute;
-    border-radius:30px;
-    padding: 5px;
-    background-color: #18181833;
-    backdrop-filter: blur(10px);
-    bottom: 10%;
-    right: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
-
-.like-icon, .comment-icon, .share-icon {
-    font-size: 24px;
-    color: #fff;
-    cursor: pointer;
-    transition: color 0.3s, transform 0.3s;
-}
-
-.like-icon {
-    color: #fff;
-}
-
-.comment-icon {
-    color: #fff; /* Color for comment button */
-}
-
-.share-icon {
-    color: #fff; /* Color for share button */
-}
-
-.like-icon.liked i {
-    color: rgb(255, 58, 23); /* Red color for liked state */
-    transform: scale(1.2); /* Slightly enlarge the icon */
-}
-
-.action-buttons i:hover {
-    transform: scale(1.1); /* Slightly enlarge icons on hover */
-}
-
-.loading-indicator {
-    display: none;
-    text-align: center;
-    padding: 10px;
-}
-
-.spinner {
-    border: 4px solid rgba(0, 0, 0, 0.1);
-    border-radius: 50%;
-    border-top: 4px solid rgb(157,0,255);
-    width: 40px;
-    height: 40px;
-    animation: spin 1s linear infinite;
-    margin: 0 auto;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    50%{
-        border-top: 4px dotted rgb(157,0,255);
-
-        transform: rotate(180deg);
-    }
-    70%{
-        border-top: 4px dotted rgb(157,0,255);
-
-    }
-    100% { transform: rotate(360deg); }
-}
-
-</style>
+    <link rel="stylesheet" href="styles-modern.css">
+    <style>
+        /* Talent showcase page specific styles */
+        body {
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        
+        .page-container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        .showcase-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--header-height);
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(157, 0, 255, 0.2);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: slideDown var(--duration-slow) var(--ease-out);
+        }
+        
+        .showcase-header .logo {
+            font-size: var(--font-size-xl);
+            font-weight: 700;
+            color: var(--primary-purple);
+            text-shadow: 0 0 10px rgba(157, 0, 255, 0.5);
+        }
+        
+        .main-content {
+            flex: 1;
+            padding: var(--header-height) 0 var(--footer-height);
+            max-width: 500px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .showcase-feed {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xl);
+            padding: var(--spacing-lg);
+        }
+        
+        .showcase-item {
+            position: relative;
+            width: 100%;
+            background: rgba(31, 31, 31, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            border: 1px solid rgba(157, 0, 255, 0.1);
+            transition: all var(--duration-normal) var(--ease-out);
+            animation: fadeInUp var(--duration-slower) var(--ease-out);
+        }
+        
+        .showcase-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-purple);
+            box-shadow: var(--shadow-xl), 0 0 30px rgba(157, 0, 255, 0.2);
+        }
+        
+        .showcase-item video,
+        .showcase-item img {
+            width: 100%;
+            height: auto;
+            max-height: 70vh;
+            object-fit: cover;
+            display: block;
+            border-radius: var(--radius-xl);
+        }
+        
+        .user-info {
+            position: absolute;
+            bottom: 80px;
+            left: var(--spacing-md);
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(15px);
+            color: var(--text-primary);
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(157, 0, 255, 0.3);
+        }
+        
+        .username {
+            font-weight: 600;
+            font-size: var(--font-size-base);
+            color: var(--text-primary);
+            margin: 0 0 var(--spacing-xs) 0;
+        }
+        
+        .caption {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+            margin: 0;
+        }
+        
+        .action-buttons {
+            position: absolute;
+            bottom: var(--spacing-md);
+            right: var(--spacing-md);
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-lg);
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(15px);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-full);
+            border: 1px solid rgba(157, 0, 255, 0.3);
+        }
+        
+        .action-button {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-size: var(--font-size-xl);
+            cursor: pointer;
+            border-radius: var(--radius-full);
+            transition: all var(--duration-normal) var(--ease-out);
+            position: relative;
+        }
+        
+        .action-button:hover {
+            background: var(--gradient-purple);
+            transform: scale(1.1);
+            box-shadow: var(--shadow-glow);
+        }
+        
+        .action-button.liked i {
+            color: #ff3a17;
+            animation: heartBeat var(--duration-normal) var(--ease-bounce);
+        }
+        
+        @keyframes heartBeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.3);
+            }
+        }
+        
+        .loading-indicator {
+            display: none;
+            text-align: center;
+            padding: var(--spacing-xl);
+            animation: fadeInUp var(--duration-normal) var(--ease-out);
+        }
+        
+        .loading-indicator.show {
+            display: block;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(157, 0, 255, 0.2);
+            border-radius: var(--radius-full);
+            border-top: 3px solid var(--primary-purple);
+            margin: 0 auto var(--spacing-md);
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { 
+                transform: rotate(0deg); 
+            }
+            100% { 
+                transform: rotate(360deg); 
+            }
+        }
+        
+        .loading-text {
+            color: var(--text-secondary);
+            font-size: var(--font-size-base);
+        }
+        
+        /* Staggered animation for feed items */
+        .showcase-item:nth-child(1) { animation-delay: 0.1s; }
+        .showcase-item:nth-child(2) { animation-delay: 0.2s; }
+        .showcase-item:nth-child(3) { animation-delay: 0.3s; }
+        .showcase-item:nth-child(4) { animation-delay: 0.4s; }
+        .showcase-item:nth-child(5) { animation-delay: 0.5s; }
+        .showcase-item:nth-child(6) { animation-delay: 0.6s; }
+        .showcase-item:nth-child(7) { animation-delay: 0.7s; }
+        .showcase-item:nth-child(8) { animation-delay: 0.8s; }
+        
+        /* Mobile optimizations */
+        @media (max-width: 576px) {
+            .main-content {
+                max-width: 100%;
+            }
+            
+            .showcase-feed {
+                padding: var(--spacing-md);
+                gap: var(--spacing-lg);
+            }
+            
+            .action-buttons {
+                bottom: var(--spacing-sm);
+                right: var(--spacing-sm);
+                gap: var(--spacing-md);
+                padding: var(--spacing-sm);
+            }
+            
+            .action-button {
+                width: 40px;
+                height: 40px;
+                font-size: var(--font-size-lg);
+            }
+            
+            .user-info {
+                bottom: 70px;
+                left: var(--spacing-sm);
+                padding: var(--spacing-xs) var(--spacing-sm);
+            }
+        }
+    </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <div id="page-container">
-        <header>
+    <div class="page-container">
+        <header class="showcase-header">
             <div class="logo">~skill showcase</div>
         </header>
-        <main>
-        <section class="show">
-            <div class="showcase-item">
-                <video src="2.webm" controls></video>
-                <div class="user-info">
-                    <span class="username">@User1</span>
-                    <p class="caption">amazing kungfu!!!</p>
+        
+        <main class="main-content">
+            <section class="showcase-feed">
+                <div class="showcase-item">
+                    <video src="2.webm" controls></video>
+                    <div class="user-info">
+                        <p class="username">@User1</p>
+                        <p class="caption">Amazing kungfu!!!</p>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="action-button like-icon">
+                            <i class="far fa-heart"></i>
+                        </button>
+                        <button class="action-button comment-icon">
+                            <i class="far fa-comment"></i>
+                        </button>
+                        <button class="action-button share-icon">
+                            <i class="fas fa-share"></i>
+                        </button>
+                    </div>
                 </div>
-                <div class="action-buttons">
-                    <div class="like-icon">
-                        <i class="far fa-heart"></i>
+                
+                <div class="showcase-item">
+                    <video src="8.mp4" controls></video>
+                    <div class="user-info">
+                        <p class="username">@User2</p>
+                        <p class="caption">Red style</p>
                     </div>
-                    <div class="comment-icon">
-                        <i class="far fa-comment"></i>
-                    </div>
-                    <div class="share-icon">
-                        <i class="fas fa-share"></i>
+                    <div class="action-buttons">
+                        <button class="action-button like-icon">
+                            <i class="far fa-heart"></i>
+                        </button>
+                        <button class="action-button comment-icon">
+                            <i class="far fa-comment"></i>
+                        </button>
+                        <button class="action-button share-icon">
+                            <i class="fas fa-share"></i>
+                        </button>
                     </div>
                 </div>
+                
+                <div class="showcase-item">
+                    <video src="1.mp4" controls></video>
+                    <div class="user-info">
+                        <p class="username">@User3</p>
+                        <p class="caption">Amazing road artwork</p>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="action-button like-icon">
+                            <i class="far fa-heart"></i>
+                        </button>
+                        <button class="action-button comment-icon">
+                            <i class="far fa-comment"></i>
+                        </button>
+                        <button class="action-button share-icon">
+                            <i class="fas fa-share"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="showcase-item">
+                    <img src="4.jpg" alt="Image 1">
+                    <div class="user-info">
+                        <p class="username">@User4</p>
+                        <p class="caption">C2-02 memories</p>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="action-button like-icon">
+                            <i class="far fa-heart"></i>
+                        </button>
+                        <button class="action-button comment-icon">
+                            <i class="far fa-comment"></i>
+                        </button>
+                        <button class="action-button share-icon">
+                            <i class="fas fa-share"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="showcase-item">
+                    <img src="5.jpg" alt="Image 2">
+                    <div class="user-info">
+                        <p class="username">@User5</p>
+                        <p class="caption">A masterpiece of art!</p>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="action-button like-icon">
+                            <i class="far fa-heart"></i>
+                        </button>
+                        <button class="action-button comment-icon">
+                            <i class="far fa-comment"></i>
+                        </button>
+                        <button class="action-button share-icon">
+                            <i class="fas fa-share"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="showcase-item">
+                    <img src="6.jpg" alt="Image 3">
+                    <div class="user-info">
+                        <p class="username">@User6</p>
+                        <p class="caption">Incredible painting!</p>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="action-button like-icon">
+                            <i class="far fa-heart"></i>
+                        </button>
+                        <button class="action-button comment-icon">
+                            <i class="far fa-comment"></i>
+                        </button>
+                        <button class="action-button share-icon">
+                            <i class="fas fa-share"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="showcase-item">
+                    <video src="7.mp4" controls></video>
+                    <div class="user-info">
+                        <p class="username">@User7</p>
+                        <p class="caption">Must-watch video!</p>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="action-button like-icon">
+                            <i class="far fa-heart"></i>
+                        </button>
+                        <button class="action-button comment-icon">
+                            <i class="far fa-comment"></i>
+                        </button>
+                        <button class="action-button share-icon">
+                            <i class="fas fa-share"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="showcase-item">
+                    <video src="3.mp4" controls></video>
+                    <div class="user-info">
+                        <p class="username">@User8</p>
+                        <p class="caption">Another great talent!</p>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="action-button like-icon">
+                            <i class="far fa-heart"></i>
+                        </button>
+                        <button class="action-button comment-icon">
+                            <i class="far fa-comment"></i>
+                        </button>
+                        <button class="action-button share-icon">
+                            <i class="fas fa-share"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+            
+            <div id="loading-indicator" class="loading-indicator">
+                <div class="spinner"></div>
+                <p class="loading-text">Loading more skill sets...</p>
             </div>
-            <div class="showcase-item">
-                <video src="8.mp4" controls></video>
-                <div class="user-info">
-                    <span class="username">@User2</span>
-                    <p class="caption">red style</p>
-                </div>
-                <div class="action-buttons">
-                    <div class="like-icon">
-                        <i class="far fa-heart"></i>
-                    </div>
-                    <div class="comment-icon">
-                        <i class="far fa-comment"></i>
-                    </div>
-                    <div class="share-icon">
-                        <i class="fas fa-share"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="showcase-item">
-                <video src="1.mp4" controls></video>
-                <div class="user-info">
-                    <span class="username">@User3</span>
-                    <p class="caption">amazing road artwork </p>
-                </div>
-                <div class="action-buttons">
-                    <div class="like-icon">
-                        <i class="far fa-heart"></i>
-                    </div>
-                    <div class="comment-icon">
-                        <i class="far fa-comment"></i>
-                    </div>
-                    <div class="share-icon">
-                        <i class="fas fa-share"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="showcase-item">
-                <img src="4.jpg" alt="Image 1">
-                <div class="user-info">
-                    <span class="username">@User4</span>
-                    <p class="caption">C2-02 memories</p>
-                </div>
-                <div class="action-buttons">
-                    <div class="like-icon">
-                        <i class="far fa-heart"></i>
-                    </div>
-                    <div class="comment-icon">
-                        <i class="far fa-comment"></i>
-                    </div>
-                    <div class="share-icon">
-                        <i class="fas fa-share"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="showcase-item">
-                <img src="5.jpg" alt="Image 1">
-                <div class="user-info">
-                    <span class="username">@User5</span>
-                    <p class="caption">A masterpiece of art!</p>
-                </div>
-                <div class="action-buttons">
-                    <div class="like-icon">
-                        <i class="far fa-heart"></i>
-                    </div>
-                    <div class="comment-icon">
-                        <i class="far fa-comment"></i>
-                    </div>
-                    <div class="share-icon">
-                        <i class="fas fa-share"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="showcase-item">
-                <img src="6.jpg" alt="Image 1">
-                <div class="user-info">
-                    <span class="username">@User6</span>
-                    <p class="caption">Incredible painting!</p>
-                </div>
-                <div class="action-buttons">
-                    <div class="like-icon">
-                        <i class="far fa-heart"></i>
-                    </div>
-                    <div class="comment-icon">
-                        <i class="far fa-comment"></i>
-                    </div>
-                    <div class="share-icon">
-                        <i class="fas fa-share"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="showcase-item">
-                <video src="7.mp4" controls></video>
-                <div class="user-info">
-                    <span class="username">@User7</span>
-                    <p class="caption">Must-watch video!</p>
-                </div>
-                <div class="action-buttons">
-                    <div class="like-icon">
-                        <i class="far fa-heart"></i>
-                    </div>
-                    <div class="comment-icon">
-                        <i class="far fa-comment"></i>
-                    </div>
-                    <div class="share-icon">
-                        <i class="fas fa-share"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="showcase-item">
-                <video src="3.mp4" controls></video>
-                <div class="user-info">
-                    <span class="username">@User8</span>
-                    <p class="caption">Another great talent!</p>
-                </div>
-                <div class="action-buttons">
-                    <div class="like-icon">
-                        <i class="far fa-heart"></i>
-                    </div>
-                    <div class="comment-icon">
-                        <i class="far fa-comment"></i>
-                    </div>
-                    <div class="share-icon">
-                        <i class="fas fa-share"></i>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <div id="loading-indicator" class="loading-indicator">
-            <div class="spinner"></div>
-            <p>Loading more skill sets...</p>
-        </div>
         </main>
+        
         <footer>
             <nav class="bottom-nav">
                 <ul class="nav-links">
@@ -400,9 +416,10 @@ footer {
                 </ul>
             </nav>
         </footer>
-        <script src="autoplay.js"></script>
-        <script src="like-animation.js"></script>
-        <script src="infinite-scroll.js"></script>
     </div>
+    
+    <script src="autoplay.js"></script>
+    <script src="like-animation.js"></script>
+    <script src="infinite-scroll.js"></script>
 </body>
 </html>
