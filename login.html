@@ -132,27 +132,21 @@
         <div class="card" id="card">
             <div class="form front">
                 <h1>Login</h1>
-                <form action="/login" method="post">
+                <form id="loginForm">
                   <input type="text" id="username" name="username" placeholder="Enter your username" required>
-
                     <input type="password" id="password" name="password" placeholder="Enter your password" required>
-
-                    <button type="submit"><a href="index.html">Login</a></button>
+                    <button type="submit">Login</button>
                 </form>
                 <a class="link" onclick="flipCard()">Don't have an account? <span>Register</span></a>
             </div>
 
             <div class="form back">
                 <h1>Register</h1>
-                <form action="/register" method="post">
+                <form id="registerForm">
                     <input type="text" id="reg-username" name="username" placeholder="Create a username" required>
-
                     <input type="email" id="reg-email" name="email" placeholder="Enter your email" required>
-
-
                     <input type="password" id="reg-password" name="password" placeholder="Create a password" required>
-
-                    <button type="submit"><a href="index.html">Register</a></button>
+                    <button type="submit">Register</button>
                 </form>
                 <a class="link" onclick="flipCard()">Already a user? <span>Login here</span></a>
             </div>
@@ -164,6 +158,81 @@
             const card = document.getElementById('card');
             card.classList.toggle('flipped');
         }
+
+        // Handle login form submission
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            try {
+                const response = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ username, password })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    // Store token and user info
+                    localStorage.setItem('token', data.token);
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                    
+                    // Show success message
+                    alert('Login successful!');
+                    
+                    // Redirect to home page
+                    window.location.href = 'index.html';
+                } else {
+                    alert(data.error || 'Login failed');
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                alert('Network error. Please try again.');
+            }
+        });
+
+        // Handle register form submission
+        document.getElementById('registerForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const username = document.getElementById('reg-username').value;
+            const email = document.getElementById('reg-email').value;
+            const password = document.getElementById('reg-password').value;
+            
+            try {
+                const response = await fetch('/api/auth/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ username, email, password })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    // Store token and user info
+                    localStorage.setItem('token', data.token);
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                    
+                    // Show success message
+                    alert('Registration successful!');
+                    
+                    // Redirect to home page
+                    window.location.href = 'index.html';
+                } else {
+                    alert(data.error || 'Registration failed');
+                }
+            } catch (error) {
+                console.error('Registration error:', error);
+                alert('Network error. Please try again.');
+            }
+        });
     </script>
 </body>
 </html>

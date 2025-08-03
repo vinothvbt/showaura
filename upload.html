@@ -241,15 +241,18 @@ footer {
         <section class="upload-section">
             <h1>Upload Your New Skill</h1>
             <div class="upload-container">
-                <div class="file-drop-zone" id="fileDropZone">
-                    <input type="file" id="fileInput" accept="image/*,video/*,audio/*" hidden>
-                    <label for="fileInput" class="file-input-label"><i class="fas fa-upload"></i> select media</label>
-                </div>
-                <div class="preview-container" id="previewContainer">
-                    <p>No file chosen</p>
-                </div>
-                <textarea id="description" placeholder="Write a caption..."></textarea>
-                <button type="submit" class="cta-button"><i class="fas fa-cloud-upload-alt"></i> Upload</button>
+                <form id="uploadForm" enctype="multipart/form-data">
+                    <div class="file-drop-zone" id="fileDropZone">
+                        <input type="file" id="fileInput" name="media" accept="image/*,video/*,audio/*" hidden>
+                        <label for="fileInput" class="file-input-label"><i class="fas fa-upload"></i> select media</label>
+                    </div>
+                    <div class="preview-container" id="previewContainer">
+                        <p>No file chosen</p>
+                    </div>
+                    <textarea id="description" name="description" placeholder="Write a caption..."></textarea>
+                    <input type="text" id="skillCategory" name="skillCategory" placeholder="Skill category (e.g., Drawing, Music, Sports)" style="width: 100%; padding: 10px; margin-bottom: 20px; border: none; border-radius: 5px; background: rgba(20, 20, 19, 0.684); color: #dbdbdb;">
+                    <button type="submit" class="cta-button" id="uploadButton"><i class="fas fa-cloud-upload-alt"></i> Upload</button>
+                </form>
             </div>
         </section>
     </main>
@@ -267,9 +270,19 @@ footer {
         const fileInput = document.getElementById('fileInput');
         const fileDropZone = document.getElementById('fileDropZone');
         const previewContainer = document.getElementById('previewContainer');
+        const uploadForm = document.getElementById('uploadForm');
+
+        // Check if user is logged in
+        window.addEventListener('load', () => {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                alert('Please login to upload content');
+                window.location.href = 'login.html';
+                return;
+            }
+        });
 
         fileDropZone.addEventListener('click', () => fileInput.click());
-
         fileInput.addEventListener('change', handleFilePreview);
 
         function handleFilePreview() {
@@ -298,6 +311,67 @@ footer {
                 previewContainer.innerHTML = '<p>No file chosen</p>';
             }
         }
+
+        // Handle form submission
+        uploadForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const token = localStorage.getItem('token');
+            if (!token) {
+                alert('Please login to upload content');
+                window.location.href = 'login.html';
+                return;
+            }
+
+            const formData = new FormData();
+            const file = fileInput.files[0];
+            const description = document.getElementById('description').value;
+            const skillCategory = document.getElementById('skillCategory').value;
+
+            if (!file) {
+                alert('Please select a file to upload');
+                return;
+            }
+
+            formData.append('media', file);
+            formData.append('description', description);
+            formData.append('skillCategory', skillCategory || 'General');
+
+            const uploadButton = document.getElementById('uploadButton');
+            uploadButton.disabled = true;
+            uploadButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Uploading...';
+
+            try {
+                const response = await fetch('/api/upload/media', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    alert(`Upload successful! You earned ${data.post.auraEarned} Aura points!`);
+                    
+                    // Reset form
+                    uploadForm.reset();
+                    previewContainer.innerHTML = '<p>No file chosen</p>';
+                    
+                    // Redirect to talent show page
+                    window.location.href = 'talentshow.html';
+                } else {
+                    alert(data.error || 'Upload failed');
+                }
+            } catch (error) {
+                console.error('Upload error:', error);
+                alert('Network error. Please try again.');
+            } finally {
+                uploadButton.disabled = false;
+                uploadButton.innerHTML = '<i class="fas fa-cloud-upload-alt"></i> Upload';
+            }
+        });
     </script>
 </body>
 </html>
