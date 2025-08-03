@@ -47,3 +47,53 @@ Thumbs.db
 # Temporary files
 tmp/
 temp/
+
+# Media files (should be uploaded to proper storage)
+*.mp4
+*.webm
+*.avi
+*.mov
+*.mkv
+*.flv
+*.wmv
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.bmp
+*.tiff
+*.svg
+*.ico
+*.mp3
+*.wav
+*.ogg
+*.flac
+*.aac
+*.wma
+*.m4a
+
+# Document files
+*.doc
+*.docx
+*.pdf
+*.txt
+*.rtf
+*.odt
+
+# Executable files
+*.exe
+*.msi
+*.dmg
+*.pkg
+*.deb
+*.rpm
+
+# macOS specific
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows specific  
+Thumbs.db
+ehthumbs.db
+Desktop.ini

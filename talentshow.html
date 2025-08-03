@@ -238,156 +238,13 @@ footer {
         <header>
             <div class="logo">~skill showcase</div>
         </header>
-        <main>
-        <section class="show">
-            <div class="showcase-item">
-                <video src="2.webm" controls></video>
-                <div class="user-info">
-                    <span class="username">@User1</span>
-                    <p class="caption">amazing kungfu!!!</p>
-                </div>
-                <div class="action-buttons">
-                    <div class="like-icon">
-                        <i class="far fa-heart"></i>
-                    </div>
-                    <div class="comment-icon">
-                        <i class="far fa-comment"></i>
-                    </div>
-                    <div class="share-icon">
-                        <i class="fas fa-share"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="showcase-item">
-                <video src="8.mp4" controls></video>
-                <div class="user-info">
-                    <span class="username">@User2</span>
-                    <p class="caption">red style</p>
-                </div>
-                <div class="action-buttons">
-                    <div class="like-icon">
-                        <i class="far fa-heart"></i>
-                    </div>
-                    <div class="comment-icon">
-                        <i class="far fa-comment"></i>
-                    </div>
-                    <div class="share-icon">
-                        <i class="fas fa-share"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="showcase-item">
-                <video src="1.mp4" controls></video>
-                <div class="user-info">
-                    <span class="username">@User3</span>
-                    <p class="caption">amazing road artwork </p>
-                </div>
-                <div class="action-buttons">
-                    <div class="like-icon">
-                        <i class="far fa-heart"></i>
-                    </div>
-                    <div class="comment-icon">
-                        <i class="far fa-comment"></i>
-                    </div>
-                    <div class="share-icon">
-                        <i class="fas fa-share"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="showcase-item">
-                <img src="4.jpg" alt="Image 1">
-                <div class="user-info">
-                    <span class="username">@User4</span>
-                    <p class="caption">C2-02 memories</p>
-                </div>
-                <div class="action-buttons">
-                    <div class="like-icon">
-                        <i class="far fa-heart"></i>
-                    </div>
-                    <div class="comment-icon">
-                        <i class="far fa-comment"></i>
-                    </div>
-                    <div class="share-icon">
-                        <i class="fas fa-share"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="showcase-item">
-                <img src="5.jpg" alt="Image 1">
-                <div class="user-info">
-                    <span class="username">@User5</span>
-                    <p class="caption">A masterpiece of art!</p>
-                </div>
-                <div class="action-buttons">
-                    <div class="like-icon">
-                        <i class="far fa-heart"></i>
-                    </div>
-                    <div class="comment-icon">
-                        <i class="far fa-comment"></i>
-                    </div>
-                    <div class="share-icon">
-                        <i class="fas fa-share"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="showcase-item">
-                <img src="6.jpg" alt="Image 1">
-                <div class="user-info">
-                    <span class="username">@User6</span>
-                    <p class="caption">Incredible painting!</p>
-                </div>
-                <div class="action-buttons">
-                    <div class="like-icon">
-                        <i class="far fa-heart"></i>
-                    </div>
-                    <div class="comment-icon">
-                        <i class="far fa-comment"></i>
-                    </div>
-                    <div class="share-icon">
-                        <i class="fas fa-share"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="showcase-item">
-                <video src="7.mp4" controls></video>
-                <div class="user-info">
-                    <span class="username">@User7</span>
-                    <p class="caption">Must-watch video!</p>
-                </div>
-                <div class="action-buttons">
-                    <div class="like-icon">
-                        <i class="far fa-heart"></i>
-                    </div>
-                    <div class="comment-icon">
-                        <i class="far fa-comment"></i>
-                    </div>
-                    <div class="share-icon">
-                        <i class="fas fa-share"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="showcase-item">
-                <video src="3.mp4" controls></video>
-                <div class="user-info">
-                    <span class="username">@User8</span>
-                    <p class="caption">Another great talent!</p>
-                </div>
-                <div class="action-buttons">
-                    <div class="like-icon">
-                        <i class="far fa-heart"></i>
-                    </div>
-                    <div class="comment-icon">
-                        <i class="far fa-comment"></i>
-                    </div>
-                    <div class="share-icon">
-                        <i class="fas fa-share"></i>
-                    </div>
-                </div>
-            </div>
+        <main id="main-section">
+        <section class="show" id="posts-container">
+            <!-- Posts will be loaded dynamically from the backend -->
         </section>
-        <div id="loading-indicator" class="loading-indicator">
+        <div id="loading-indicator" class="loading-indicator" style="display: none;">
             <div class="spinner"></div>
-            <p>Loading more skill sets...</p>
+            <p>Loading more content...</p>
         </div>
         </main>
         <footer>
@@ -403,6 +260,73 @@ footer {
         <script src="autoplay.js"></script>
         <script src="like-animation.js"></script>
         <script src="infinite-scroll.js"></script>
+        <script>
+            // Load initial posts on page load
+            document.addEventListener('DOMContentLoaded', async function() {
+                const postsContainer = document.getElementById('posts-container');
+                const loadingIndicator = document.getElementById('loading-indicator');
+                
+                try {
+                    loadingIndicator.style.display = 'block';
+                    
+                    const response = await fetch('/api/upload/all?page=1&limit=10');
+                    const data = await response.json();
+                    
+                    if (response.ok && data.posts && data.posts.length > 0) {
+                        data.posts.forEach(post => {
+                            const postElement = createPostElement(post);
+                            postsContainer.appendChild(postElement);
+                        });
+                    } else {
+                        postsContainer.innerHTML = '<div style="text-align: center; color: #fff; padding: 40px;"><h3>No posts yet!</h3><p>Be the first to upload your talent!</p><a href="upload.html" style="color: rgb(157,0,255);">Upload Now</a></div>';
+                    }
+                } catch (error) {
+                    console.error('Error loading posts:', error);
+                    postsContainer.innerHTML = '<div style="text-align: center; color: #fff; padding: 40px;"><h3>Error loading content</h3><p>Please try again later.</p></div>';
+                } finally {
+                    loadingIndicator.style.display = 'none';
+                }
+            });
+
+            function createPostElement(post) {
+                const postDiv = document.createElement('div');
+                postDiv.className = 'showcase-item';
+                postDiv.setAttribute('data-post-id', post.id);
+
+                let mediaElement = '';
+                if (post.media_type === 'image') {
+                    mediaElement = `<img src="${post.media_path}" alt="${post.title}" loading="lazy">`;
+                } else if (post.media_type === 'video') {
+                    mediaElement = `<video src="${post.media_path}" controls></video>`;
+                } else if (post.media_type === 'audio') {
+                    mediaElement = `<audio src="${post.media_path}" controls></audio>`;
+                }
+
+                postDiv.innerHTML = `
+                    ${mediaElement}
+                    <div class="user-info">
+                        <span class="username">@${post.username}</span>
+                        <p class="caption">${post.description || ''}</p>
+                    </div>
+                    <div class="action-buttons">
+                        <div class="like-icon">
+                            <i class="far fa-heart"></i>
+                        </div>
+                        <div class="comment-icon">
+                            <i class="far fa-comment"></i>
+                        </div>
+                        <div class="share-icon">
+                            <i class="fas fa-share"></i>
+                        </div>
+                    </div>
+                    <div class="post-meta" style="display: none;">
+                        <span class="likes">${post.likes || 0}</span>
+                    </div>
+                `;
+
+                return postDiv;
+            }
+        </script>
     </div>
 </body>
 </html>
